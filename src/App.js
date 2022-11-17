@@ -1,19 +1,22 @@
 import React from 'react'
-// import "./App.css"
+import { useSelector, useDispatch } from 'react-redux'
+import { increaseNumber, decreaseNumber } from "./action/index"
 const App = () => {
+  const myState = useSelector((state) => state.changeTheNumber)
+  const dispatch = useDispatch()
   return (
     <>
-      <div class=" container-fluid vh-100 bg-warning text-center">
+      <div className=" text-center bg-warning vh-100  container-fluid">
 
         <h1>Increment/decrement counter</h1>
         <h4>REDUX-APP</h4>
-        <div className='bg-dark mt-5  text-center space-right2 row m-auto p-5 container-fluid w-50'>
+        <div className='  text-center row m-auto p-5 mt-5 container-fluid '>
 
-       
-            <button href="#" class=" btn btn-success text-white  "><h1 className='display-1'>+</h1></button>
-            <span name="quantity" class="quantity__input  bg-white " ><h1 className='display-1'>0</h1></span>
-            <button href="#" class="btn btn-danger text-white  " ><h1 className='display-1'>-</h1></button>
-     
+
+          <button onClick={() => dispatch(increaseNumber())} className="col-2 m-auto btn btn-success text-white rounded-5 " value="+"><h1 className='display-1'>+</h1></button>
+          <input name="quantity" className="text-center display-1 quantity__input auto col-4 w-25 mb-0 bg-white rounded-5 btn-outline-light border-0 " value={myState} />
+          <button onClick={() => dispatch(decreaseNumber())} className="btn btn-danger m-auto col-2 text-white rounded-5 " value="-" ><h1 className='display-1'>-</h1></button>
+
         </div>
 
       </div>
